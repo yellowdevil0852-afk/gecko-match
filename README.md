@@ -1,1 +1,1 @@
-# geckocardgame
+# gecko-match
