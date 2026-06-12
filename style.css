@@ -1,0 +1,155 @@
+/* Styling & Accessible Palette */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f4eb; /* Soft beige background */
+    color: #4a3f35; /* Dark earth-tone text for high readability */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.score-container {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+#restart-btn {
+    background-color: #8c9a6b; /* Soft lizard-green / earth tone */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+#restart-btn:hover {
+    background-color: #738054;
+}
+
+/* Game Grid Layout */
+.game-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols, 4), 1fr); 
+    gap: 12px;
+    width: max-content;
+    max-width: 100%;
+}
+
+/* Base Card Layout (Standard Desktop/Tablet sizes) */
+.card {
+    background-color: #e6dfd3;
+    border: 3px solid #cbd5e1;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem; /* Clear visible emojis */
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: auto; /* Centers the cards perfectly in their grid tracks */
+}
+
+/* --- Fixed Dimensions per Difficulty (Desktop / Large Screens) --- */
+[data-difficulty="low"] .card {
+    width: 160px;
+    height: 90px;
+}
+
+[data-difficulty="medium"] .card {
+    width: 128px;
+    height: 72px;
+}
+
+[data-difficulty="hard"] .card {
+    width: 112px;
+    height: 63px;
+}
+
+/* --- Responsive Adjustments for Mobile Screens (Width under 768px) --- */
+@media (max-width: 768px) {
+    .card {
+        font-size: 1.6rem; /* Slightly smaller emojis so they don't overflow */
+        border-width: 2px;
+    }
+
+    [data-difficulty="low"] .card {
+        width: 80px;
+        height: 45px;
+    }
+
+    [data-difficulty="medium"] .card {
+        width: 64px;
+        height: 36px;
+    }
+
+    /* Hard mode has 9 columns, which is very wide for portrait mobile. 
+       We scale it down tightly so it fits the screen width without horizontal scrolling. */
+    [data-difficulty="hard"] .card {
+        width: 40px;
+        height: 22.5px;
+        font-size: 1.1rem;
+        border-radius: 6px;
+        border-width: 1.5px;
+    }
+    
+    .game-grid {
+        gap: 6px; /* Tighter spacing on smaller screens */
+    }
+}
+
+/* --- Chosen / Selected Card Effect --- */
+.card.flipped:not(.matched):not(.hazard) {
+    border-color: #d97706; /* Vibrant amber border to show it is selected */
+    box-shadow: 0 0 12px rgba(217, 119, 6, 0.4);
+    transform: translateY(-4px) scale(1.03); /* Subtle lift effect */
+}
+
+/* --- Hazard Card Styling ("Boom!") --- */
+.card.hazard {
+    background-color: #f8d7da !important; /* Soft warning red */
+    border-color: #dc3545 !important;     /* Direct hazard red */
+    color: #842029 !important;
+    cursor: default;
+    animation: shake 0.4s ease-in-out;    /* Explosion shake effect */
+}
+
+/* Shake animation for hitting a hazard */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+}
+
+/* --- Matched Good Card Style --- */
+.card.matched:not(.hazard) {
+    background-color: #e2f0d9 !important; /* Soft, calming green */
+    border-color: #2e7d32 !important;     /* Deep success green */
+    color: #1b5e20 !important;
+    cursor: default;
+    animation: successPulse 0.4s ease-in-out; /* Pop effect when matched */
+}
+
+/* Quick pulse effect for matching good items */
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); box-shadow: 0 0 15px rgba(46, 125, 50, 0.5); }
+    100% { transform: scale(1); }
+}
