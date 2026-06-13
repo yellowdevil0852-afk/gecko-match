@@ -1,45 +1,138 @@
-/* Styling & Accessible Palette */
+/* ==========================================================================
+   1. Base Layout & Typography (Accessible Earth Tones)
+   ========================================================================== */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f4eb; /* Soft beige background */
-    color: #4a3f35; /* Dark earth-tone text for high readability */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f7f4eb; 
+    color: #4a3f35;           
     margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 header {
     text-align: center;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 900px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 6px;
+    color: #3d342c;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    font-size: 1rem;
+    color: #7a6e61;
+    margin-top: 0;
     margin-bottom: 20px;
 }
 
+/* ==========================================================================
+   2. Clean Control Navigation Box
+   ========================================================================== */
 .score-container {
-    margin-top: 10px;
-    font-size: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;                  
+    background-color: #ffffff;  
+    padding: 12px 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(74, 63, 53, 0.05); 
+    border: 1px solid #eaddcd;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
-#restart-btn {
-    background-color: #8c9a6b; /* Soft lizard-green / earth tone */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 8px;
+.score-container span {
+    color: #5c4f43;
+    padding: 0 4px;
+}
+
+.score-container strong {
+    color: #3d342c;
+    font-weight: 700;
+}
+
+.score-container select {
+    background-color: #fcfbfa;
+    color: #4a3f35;
+    border: 1px solid #cbd5e1;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    border-radius: 10px;
     cursor: pointer;
-    margin-left: 15px;
-    font-weight: bold;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.score-container select:focus {
+    border-color: #8c9a6b;
+    box-shadow: 0 0 0 3px rgba(140, 154, 107, 0.15);
+}
+
+/* --- Lower Layer Button Group Layout --- */
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    width: 100%;
+}
+
+/* Base Unified Styling for Actions Buttons */
+.action-btn {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Styling (Lighter Green Tone) */
+#show-all-btn {
+    background-color: #86b474;  
+    color: #ffffff;
+}
+#show-all-btn:hover {
+    background-color: #6c9560;
+}
+
+/* Styling (Your original minimalist dark green tone) */
+#restart-btn {
+    background-color: #8c9a6b;  
+    color: #ffffff;
+}
 #restart-btn:hover {
     background-color: #738054;
 }
 
-/* Game Grid Layout */
+/* Universally apply a subtle button tap feedback press effect */
+.action-btn:active {
+    transform: scale(0.97);
+}
+
+/* ==========================================================================
+   3. Game Grid & Layout Centering
+   ========================================================================== */
 .game-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     margin: 20px auto;
 }
@@ -47,109 +140,144 @@ header {
 .game-grid {
     display: grid;
     grid-template-columns: repeat(var(--grid-cols, 4), 1fr); 
-    gap: 12px;
+    gap: 14px; 
+    justify-content: center;
+    align-items: center;
     width: max-content;
     max-width: 100%;
 }
 
-/* Base Card Layout (Standard Desktop/Tablet sizes) */
+/* ==========================================================================
+   4. Base Card Parameters & Dimensions
+   ========================================================================== */
 .card {
-    background-color: #e6dfd3;
+    background-color: #e6dfd3; 
     border: 3px solid #cbd5e1;
     border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.2rem; /* Clear visible emojis */
     cursor: pointer;
     user-select: none;
-    transition: transform 0.2s, background-color 0.2s;
-    margin: auto; /* Centers the cards perfectly in their grid tracks */
+    transition: transform 0.2s, border-color 0.2s, background-color 0.2s;
+    box-sizing: border-box; 
+    overflow: hidden;       
 }
 
-/* --- Fixed Dimensions per Difficulty (Desktop / Large Screens) --- */
-[data-difficulty="low"] .card {
-    width: 160px;
-    height: 90px;
+/* Clear, balanced card dimensions across modes */
+[data-difficulty="low"] .card { width: 180px; height: 140px; }
+[data-difficulty="medium"] .card { width: 150px; height: 120px; }
+[data-difficulty="hard"] .card { width: 130px; height: 105px; }
+
+/* Inner Image Fitting Configuration */
+.card .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #e6dfd3;
+    pointer-events: none;
 }
 
-[data-difficulty="medium"] .card {
-    width: 128px;
-    height: 72px;
+/* ==========================================================================
+   5. Card Mode Functional Switches (Word/Image Visibility)
+   ========================================================================== */
+/* Image Mode Display Rules */
+.game-grid.image-mode .card-text {
+    display: none !important;
+}
+.game-grid.image-mode .card .card-img {
+    display: block !important;
 }
 
-[data-difficulty="hard"] .card {
-    width: 112px;
-    height: 63px;
+/* Word Mode Display Rules */
+.game-grid.word-mode .card .card-img {
+    display: none !important;
+}
+.game-grid.word-mode .card-text {
+    display: block !important;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.3;
+    color: #3d342c;
 }
 
-/* --- Responsive Adjustments for Mobile Screens (Width under 768px) --- */
-@media (max-width: 768px) {
-    .card {
-        font-size: 1.6rem; /* Slightly smaller emojis so they don't overflow */
-        border-width: 2px;
-    }
-
-    [data-difficulty="low"] .card {
-        width: 80px;
-        height: 45px;
-    }
-
-    [data-difficulty="medium"] .card {
-        width: 64px;
-        height: 36px;
-    }
-
-    /* Hard mode has 9 columns, which is very wide for portrait mobile. 
-       We scale it down tightly so it fits the screen width without horizontal scrolling. */
-    [data-difficulty="hard"] .card {
-        width: 40px;
-        height: 22.5px;
-        font-size: 1.1rem;
-        border-radius: 6px;
-        border-width: 1.5px;
-    }
-    
-    .game-grid {
-        gap: 6px; /* Tighter spacing on smaller screens */
-    }
-}
-
-/* --- Chosen / Selected Card Effect --- */
+/* ==========================================================================
+   6. Active State Modifiers (Flipped, Matched, Hazard)
+   ========================================================================== */
 .card.flipped:not(.matched):not(.hazard) {
-    border-color: #d97706; /* Vibrant amber border to show it is selected */
+    border-color: #d97706; 
     box-shadow: 0 0 12px rgba(217, 119, 6, 0.4);
-    transform: translateY(-4px) scale(1.03); /* Subtle lift effect */
+    transform: translateY(-4px) scale(1.03);
 }
 
-/* --- Hazard Card Styling ("Boom!") --- */
 .card.hazard {
-    background-color: #f8d7da !important; /* Soft warning red */
-    border-color: #dc3545 !important;     /* Direct hazard red */
+    background-color: #f8d7da !important;
+    border-color: #dc3545 !important;
     color: #842029 !important;
     cursor: default;
-    animation: shake 0.4s ease-in-out;    /* Explosion shake effect */
+    animation: shake 0.4s ease-in-out;
 }
 
-/* Shake animation for hitting a hazard */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     20%, 60% { transform: translateX(-6px); }
     40%, 80% { transform: translateX(6px); }
 }
 
-/* --- Matched Good Card Style --- */
 .card.matched:not(.hazard) {
-    background-color: #e2f0d9 !important; /* Soft, calming green */
-    border-color: #2e7d32 !important;     /* Deep success green */
+    background-color: #e2f0d9 !important;
+    border-color: #2e7d32 !important;
     color: #1b5e20 !important;
     cursor: default;
-    animation: successPulse 0.4s ease-in-out; /* Pop effect when matched */
+    animation: successPulse 0.4s ease-in-out;
 }
 
-/* Quick pulse effect for matching good items */
 @keyframes successPulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.08); box-shadow: 0 0 15px rgba(46, 125, 50, 0.5); }
+    50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(46, 125, 50, 0.4); }
     100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   7. Mobile Fluid Scale Breakdown (Responsive Rules)
+   ========================================================================== */
+@media (max-width: 992px) {
+    [data-difficulty="hard"] .card {
+        width: 95px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .score-container {
+        padding: 12px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+    .score-container select, #restart-btn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    .game-grid {
+        gap: 8px;
+    }
+    .game-grid.word-mode .card-text {
+        font-size: 0.75rem;
+    }
+    [data-difficulty="low"] .card {
+        width: 110px;
+        height: 85px;
+    }
+    [data-difficulty="medium"] .card {
+        width: 85px;
+        height: 70px;
+    }
+    [data-difficulty="hard"] .card {
+        width: 65px;
+        height: 55px;
+        border-radius: 8px;
+        border-width: 2px;
+    }
 }

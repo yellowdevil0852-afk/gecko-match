@@ -1,32 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="zh-Hant"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gecko Match</title>
+    <title>守宮連連看 🦎</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Gecko Match 🦎</h1>
-        <p>Match the healthy gecko habits!</p>
+        <h1>守宮連連看 🦎</h1>
+        <p>找出對守宮健康有益的好習慣吧！</p>
         <div class="score-container">
-            <label for="difficulty">Difficulty: </label>
+            <label for="difficulty">遊戲難度: </label>
             <select id="difficulty">
-                <option value="low">Low (6 Pairs)</option>
-                <option value="medium" selected>Medium (12 Pairs)</option>
-                <option value="hard">Hard (18 Pairs)</option>
+                <option value="low">簡單 (6 對卡片)</option>
+                <option value="medium" selected>中等 (12 對卡片)</option>
+                <option value="hard">困難 (18 對卡片)</option>
             </select>
             
-            <span>Score: <strong id="score">0</strong></span>
-            <span>Flips: <strong id="flip-count">0</strong></span> <button id="restart-btn">Restart Game</button>
+            <label for="view-mode">卡片模式: </label>
+            <select id="view-mode">
+                <option value="image-mode" selected>圖片模式</option>
+                <option value="word-mode">純文字模式</option>
+            </select>
+
+            <span>目前得分: <strong id="score">0</strong></span>
+            <span>翻牌次數: <strong id="flip-count">0</strong></span> 
+        </div>
+        <div class="button-group">
+            <button id="show-all-btn" class="action-btn">顯示所有卡片</button>
+            <button id="restart-btn" class="action-btn secondary">重新開始</button>
         </div>
     </header>
 
     <main class="game-container">
-        <div class="game-grid" id="game-grid">
-            </div>
+        <div class="game-grid" id="game-grid"></div>
     </main>
 
     <script src="script.js"></script>
