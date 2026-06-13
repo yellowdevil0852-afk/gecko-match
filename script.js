@@ -6,6 +6,10 @@ const restartBtn = document.getElementById('restart-btn');
 const showAllBtn = document.getElementById('show-all-btn');
 const difficultySelect = document.getElementById('difficulty');
 const viewModeSelect = document.getElementById('view-mode');
+const imageModal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-img');
+const modalCaption = document.getElementById('modal-caption');
+const modalCloseBtn = document.getElementById('modal-close-btn');
 
 // Master Pool (Exactly 12 Good cards and 6 Bad cards)
 const allBehaviors = [
@@ -98,6 +102,7 @@ function initGame() {
         cardElement.setAttribute('aria-label', 'Hidden card');
         
         cardElement.addEventListener('click', handleCardClick);
+        cardElement.addEventListener('dblclick', handleCardDblClick);
         gameGrid.appendChild(cardElement);
     });
 
@@ -203,6 +208,37 @@ function checkForMatch() {
         }, 1000);
     }
 }
+
+// Double Click Handler to open modal pop-up window
+function handleCardDblClick(e) {
+    const cardId = e.currentTarget.dataset.id;
+    const cardMatchData = allBehaviors.find(item => item.id == cardId);
+    
+    // Set the source image path and text title label inside modal window
+    modalImg.src = cardMatchData.content;
+    modalCaption.textContent = cardMatchData.label.replace('💥 糟糕！', ''); // Clean hazard prefix out if wanted
+    
+    // Smoothly turn on overlay display
+    imageModal.classList.add('active');
+}
+
+// Close Modal Window Function
+function closeModal() {
+    imageModal.classList.remove('active');
+    setTimeout(() => {
+        modalImg.src = ''; // Clear image asset once faded out to preserve bandwidth
+    }, 300);
+}
+
+// Close button triggers close
+modalCloseBtn.addEventListener('click', closeModal);
+
+// Optional UX: Clicking the dark blurred overlay background also exits the window cleanly
+imageModal.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+        closeModal();
+    }
+});
 
 // Difficulty Dropdown Listener
 difficultySelect.addEventListener('change', (e) => {
