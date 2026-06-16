@@ -19,7 +19,7 @@ const allBehaviors = [
     { id: 2, content: './images/correct_insect_size.png', label: '合適的昆蟲大小', type: 'good', description: '餵食的昆蟲長度不應超過守宮兩眼之間的距離。過大的食物容易導致守宮哽噎、吐食或壓迫消化系統。' },
     { id: 3, content: './images/cup-hand_holding.png', label: '雙手捧抱守宮', type: 'good', description: '與守宮互動時，應使用雙手從下方輕輕托起、捧在掌心。這能給牠們足夠的安全感，並降低意外摔落的機率。' },
     { id: 4, content: './images/fresh_water.png', label: '提供乾淨飲水', type: 'good', description: '守宮需要每天更換乾淨的過濾水或常溫熟水。不乾淨的水源容易滋生細菌，導致腸胃發炎。' },
-    { id: 5, content: './images/humid_hide.png', label: '設置濕度躲避處', type: 'good', description: '在飼養箱內放置鋪有濕水苔或濕廚房紙巾的躲避穴。維持局部的微高濕度環境，能幫助守宮順利完成脫皮。' },
+    { id: 5, content: './images/humid_hide.png', label: '設置濕潤住處', type: 'good', description: '在飼養箱內放置鋪有濕水苔或濕廚房紙巾的躲避穴。維持局部的微高濕度環境，能幫助守宮順利完成脫皮。' },
     { id: 6, content: './images/locking_the_cage.png', label: '鎖好飼養箱門', type: 'good', description: '守宮是非常厲害的越獄大師！每次餵食或清理完畢後，務必確認箱門已確實扣緊或上鎖，防止寵物走失。' },
     { id: 7, content: './images/perfect_shed_check.png', label: '檢查是否完全脫皮', type: 'good', description: '脫皮結束後，記得仔細檢查守宮的腳趾和尾尖。殘留的舊皮如果沒有及時清掉，會隨著時間乾枯並勒緊血管，導致腳趾壞死。' },
     { id: 8, content: './images/pre-handling_hand_wash.png', label: '互動前確實洗手', type: 'good', description: '抓取或接觸守宮前後都應該把手洗乾淨。這不僅能防止我們身上的細菌或化學殘留物影響爬蟲，也能保護飼主的衛生。' },
