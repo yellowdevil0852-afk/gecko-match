@@ -15,7 +15,7 @@ const modalCloseBtn = document.getElementById('modal-close-btn');
 // Master Pool (Exactly 12 Good cards and 6 Bad cards)
 const allBehaviors = [
     // --- good behaviors (12 pairs) ---
-    { id: 1, content: 'images/calcium dusting.png', label: '補充鈣粉', type: 'good', description: '鈣質對守宮的骨骼發育至關重要。定期在昆蟲飼料中裹上適量鈣粉，能有效預防守宮罹患嚴重的代謝性骨病（MBD）。' },
+    { id: 1, content: 'images/calcium dusting.png', label: '補充鈣粉', type: 'good', description: '鈣質對守宮的骨骼發育至關重要。定期在昆蟲飼料中裹上適量鈣粉，能有效預防守宮罹患嚴重的代謝性骨病。' },
     { id: 2, content: 'images/correct insect size.png', label: '合適的昆蟲大小', type: 'good', description: '餵食的昆蟲長度不應超過守宮兩眼之間的距離。過大的食物容易導致守宮哽噎、吐食或壓迫消化系統。' },
     { id: 3, content: 'images/cup-hand holding.png', label: '雙手捧抱守宮', type: 'good', description: '與守宮互動時，應使用雙手從下方輕輕托起、捧在掌心。這能給牠們足夠的安全感，並降低意外摔落的機率。' },
     { id: 4, content: 'images/fresh water.png', label: '提供乾淨飲水', type: 'good', description: '守宮需要每天更換乾淨的過濾水或常溫熟水。不乾淨的水源容易滋生細菌，導致腸胃發炎。' },
@@ -23,7 +23,7 @@ const allBehaviors = [
     { id: 6, content: 'images/locking the cage.png', label: '鎖好飼養箱門', type: 'good', description: '守宮是非常厲害的越獄大師！每次餵食或清理完畢後，務必確認箱門已確實扣緊或上鎖，防止寵物走失。' },
     { id: 7, content: 'images/perfect shed check.png', label: '檢查是否完全脫皮', type: 'good', description: '脫皮結束後，記得仔細檢查守宮的腳趾和尾尖。殘留的舊皮如果沒有及時清掉，會隨著時間乾枯並勒緊血管，導致腳趾壞死。' },
     { id: 8, content: 'images/pre-handling hand wash.png', label: '互動前確實洗手', type: 'good', description: '抓取或接觸守宮前後都應該把手洗乾淨。這不僅能防止我們身上的細菌或化學殘留物影響爬蟲，也能保護飼主的衛生。' },
-    { id: 9, content: 'images/quiet observing.png', label: '安靜觀察不打擾', type: 'good', description: '守宮是生性害羞的夜行性爬蟲。白天牠們多在睡覺，保持環境安靜、減少過度打擾，能大大降低寵物的精神壓力。' },
+    { id: 9, content: 'images/quiet observing.png', label: '安靜觀察不打擾', type: 'good', description: '守宮是害羞的夜行性爬蟲。白天牠們多在睡覺，保持環境安靜、減少過度打擾，能大大降低寵物的精神壓力。' },
     { id: 10, content: 'images/safe substrate.png', label: '使用安全墊材', type: 'good', description: '建議使用廚房紙巾、爬蟲墊或防滑沖孔墊作為底材。避免使用細沙或碎木屑，以防守宮在捕食時誤食導致腸胃阻塞。' },
     { id: 11, content: 'images/spot cleaning.png', label: '每日局部清理', type: 'good', description: '每天花一分鐘夾走便便、清除髒污的墊材，能有效抑止環境細菌與寄生蟲滋生，給守宮一個乾淨清爽的家。' },
     { id: 12, content: 'images/thermometer check.png', label: '檢查溫度計數值', type: 'good', description: '守宮是冷血動物，環境溫度直接影響消化功能。應每天檢查溫溼度計，確保環境維持在舒適的範圍內。' },
